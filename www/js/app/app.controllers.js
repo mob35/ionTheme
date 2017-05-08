@@ -223,7 +223,7 @@ angular.module('your_app_name.app.controllers', [])
       $state.go('auth.welcome');
     });
     $rootScope.$on('userlogouterr', function () {
-
+      console.log('logout failed');
     });
 
     $ionicModal.fromTemplateUrl('views/app/legal/terms-of-service.html', {

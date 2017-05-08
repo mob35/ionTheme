@@ -7,7 +7,7 @@ angular.module('your_app_name.app.services', [])
     };
 
     this.removeUser = function () {
-      window.localStorage.clear();
+      window.localStorage.removeItem('user');
     };
 
     this.getLoggedUser = function () {
