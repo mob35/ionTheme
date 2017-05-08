@@ -6,9 +6,21 @@ angular.module('your_app_name.app.services', [])
       window.localStorage.your_app_name_user = JSON.stringify(user);
     };
 
+    this.removeUser = function () {
+      window.localStorage.clear();
+    };
+
     this.getLoggedUser = function () {
       return (window.localStorage.your_app_name_user) ?
         JSON.parse(window.localStorage.your_app_name_user) : null;
+    };
+
+    this.successlogout = function () {
+      $rootScope.$emit('userlogoutsuccess');
+    };
+
+    this.failedlogout = function () {
+      $rootScope.$emit('userlogouterr');
     };
 
     var apiURL = 'http://localhost:3000/api';
@@ -67,6 +79,14 @@ angular.module('your_app_name.app.services', [])
       // });
       // return dfd.promise;
     };
+
+    this.logoutuser = function () {
+      $auth.logout({
+        url: 'http://localhost:3000/api/auth/signout'
+      })
+        .then(this.successlogout)
+        .catch(this.failedlogout);
+    }
 
     this.loginfacebook = function () {
       //var dfd = $q.defer();

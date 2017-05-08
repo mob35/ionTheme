@@ -1,4 +1,4 @@
-<ion-view ng-class="{'own-profile': myProfile}" class="profile-view" cache-view="false" view-title="Profile">
+<ion-view ng-class="{'own-profile': loggedUser}" class="profile-view" cache-view="false" view-title="Profile">
   <ion-content has-bouncing='false' class="profile-content" delegate-handle="profile-scroll">
     <div class="row profile-data">
       <div class="col">
@@ -34,7 +34,7 @@
     </div>
     <div class="row user-interactions">
       <div class="col">
-        <div class="row split-actions" ng-if="!myProfile">
+        <div class="row split-actions" ng-if="!loggedUser">
           <div class="col">
             <button class="button button-block highlighted">
               Following
@@ -46,7 +46,7 @@
             </button>
           </div>
         </div>
-        <div class="row split-actions" ng-if="myProfile">
+        <div class="row split-actions" ng-if="loggedUser">
           <div class="col">
             <button class="button button-block icon-left ion-gear-a settings-button" ui-sref="app.settings">
               Settings

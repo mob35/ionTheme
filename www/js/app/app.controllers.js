@@ -7,6 +7,9 @@ angular.module('your_app_name.app.controllers', [])
 
     //save our logged user on the localStorage
     // AuthService.saveUser(user);
+    if (user.profileImageURL.substr(0, 7) === 'modules') {
+      user.profileImageURL = 'http://localhost:3000/' + user.profileImageURL;
+    }
 
     $scope.loggedUser = user;
     console.log($scope.loggedUser);
@@ -212,7 +215,16 @@ angular.module('your_app_name.app.controllers', [])
     //$scope.paymentDetails;
   })
 
-  .controller('SettingsCtrl', function ($scope, $ionicModal) {
+  .controller('SettingsCtrl', function ($rootScope, $scope, $ionicModal, AuthService, $state) {
+
+    $rootScope.$on('userlogoutsuccess', function () {
+      // console.log('logout success');
+      AuthService.removeUser();
+      $state.go('auth.welcome');
+    });
+    $rootScope.$on('userlogouterr', function () {
+
+    });
 
     $ionicModal.fromTemplateUrl('views/app/legal/terms-of-service.html', {
       scope: $scope,
@@ -235,6 +247,10 @@ angular.module('your_app_name.app.controllers', [])
     $scope.showPrivacyPolicy = function () {
       $scope.privacy_policy_modal.show();
     };
+
+    $scope.logout = function () {
+      AuthService.logoutuser();
+    }
 
   })
 

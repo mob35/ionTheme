@@ -7,7 +7,6 @@ angular.module('your_app_name.auth.controllers', [])
 	.controller('WelcomeCtrl', function ($rootScope, $scope, $ionicModal, show_hidden_actions, $state, AuthService) {
 
 		$rootScope.$on('userLoggedIn', function (e, data) {
-			// console.log(data);
 			AuthService.saveUser(data);
 			$state.go('app.feed');
 		});
