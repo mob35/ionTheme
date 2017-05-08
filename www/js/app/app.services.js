@@ -7,7 +7,6 @@ angular.module('your_app_name.app.services', [])
     };
 
     this.getLoggedUser = function () {
-
       return (window.localStorage.your_app_name_user) ?
         JSON.parse(window.localStorage.your_app_name_user) : null;
     };

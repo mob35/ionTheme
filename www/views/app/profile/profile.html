@@ -9,10 +9,11 @@
                 <!-- We need a wrapper with width set for the preload image directive -->
                 <div class="user-image-outer">
                   <pre-img ratio="_1_1" helper-class="rounded-image">
-                    <img class="user-image" ng-src="{{user.picture}}" spinner-on-load>
+                    <img class="user-image" ng-src="{{loggedUser.profileImageURL}}" spinner-on-load>
                 	</pre-img>
                 </div>
-                <h2 class="user-name">{{user.name}}</h2>
+                
+                <h2 class="user-name">{{loggedUser.displayName}}</h2>
                 <p class="user-resume">
                   <b>{{user.followers}}</b> Followers &nbsp;&nbsp;<b>{{user.following}}</b> Following
                 </p>
